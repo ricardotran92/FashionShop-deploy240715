@@ -20,7 +20,7 @@ export default (user, statusCode, res, loginType='local') => {
     res.cookie("token", token, options);
 
     // Chuyển hướng người dùng đến localhost:3000 để cập nhật hồ sơ
-    res.status(statusCode).redirect('http://localhost:3000');
+    res.status(statusCode).redirect('https://unwilling-enid-ricardotran-952ec3c3.koyeb.app');
   }
 
 }; 
