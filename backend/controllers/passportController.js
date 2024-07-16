@@ -117,30 +117,6 @@ passport.use(
       authType: 'reauthenticate', // Yêu cầu xác thực lại
     },
     async (accessToken, refreshToken, profile, done) => {
-      // Tìm hoặc tạo người dùng mới dựa trên thông tin từ Facebook
-      // const newUser = {
-      //   facebookId: profile.id,
-      //   email: profile.emails[0].value,
-      //   name: `${profile.name.givenName} ${profile.name.familyName}`,
-      //   avatar: {
-      //     public_id: "facebook_avatar_" + profile.id,
-      //     url: `http://graph.facebook.com/${profile.id}/picture?type=large`,
-      //   },
-      //   address: "Your placeholder address / Vui lòng cập nhật địa chỉ của bạn",
-      //   phone: "+84",
-      //   password: "Your placeholder password / Vui lòng tạo mật khẩu đăng nhập",
-      //   method: "facebook",
-      // };
-      // try {
-      //   let user = await User.findOne({ facebookId: profile.id });
-      //   if (!user) {
-      //     user = await User.create(newUser);
-      //   }
-      //   done(null, user);
-      // } catch (err) {
-      //   done(err, null);
-      // }
-
       try {
         let user = await User.findOne({ email: profile.emails[0].value });
         if (user) {
@@ -170,6 +146,7 @@ passport.use(
         }
         done(null, user);
       } catch (err) {
+        console.error(err);
         done(err, null);
       }
     }
