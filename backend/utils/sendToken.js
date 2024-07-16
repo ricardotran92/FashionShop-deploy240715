@@ -23,7 +23,7 @@ export default (user, statusCode, res, loginType='local') => {
     // res.status(statusCode).redirect('https://unwilling-enid-ricardotran-952ec3c3.koyeb.app');
     
   } else if (loginType === 'facebook'){
-    res.cookie("token, token, options");
+    res.cookie("token", token, options);
   }
   res.status(statusCode).redirect(process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL);
 

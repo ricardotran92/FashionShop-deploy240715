@@ -114,7 +114,7 @@ passport.use(
       // callbackURL: `http://localhost:${process.env.PORT}/api/auth/facebook/callback`,
       callbackURL: process.env.NODE_ENV === 'DEVELOPMENT' ? `${process.env.BACKEND_URL}/api/auth/facebook/callback` : `${process.env.BACKEND_PROD_URL}/api/auth/facebook/callback`,
       profileFields: ["id", "emails", "name"], // Yêu cầu các trường thông tin từ Facebook
-      // authType: 'reauthenticate', // Yêu cầu xác thực lại
+      authType: 'reauthenticate', // Yêu cầu xác thực lại
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
