@@ -82,7 +82,7 @@ router.get("/login/failed", (req, res) => {
 
 // Route cho đăng nhập bằng Facebook
 router.get("/auth/facebook",
-  passport.authenticate("facebook", { scope: ["email"] })
+  passport.authenticate("facebook", { authType: 'reauthenticate', scope: ["email"] })
 );
 
 // Callback route cho Facebook để chuyển hướng
