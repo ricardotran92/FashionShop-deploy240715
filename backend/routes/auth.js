@@ -51,7 +51,7 @@ router.get(
     sendToken(req.user, 200, res, 'google'); // Send token to client
     // Đăng nhập thành công, chuyển hướng người dùng về profile của họ
     // res.redirect("http://localhost:3000");
-    res.redirect(process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL);
+    // res.redirect(process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL);
   }
 );
 
