@@ -35,8 +35,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: `http://localhost:${process.env.PORT}/api/auth/google/callback`, // backend port: 3001
+      // callbackURL: `http://localhost:${process.env.PORT}/api/auth/google/callback`, // backend port: 3001
       // callbackURL: "auth/google/callback",
+      callbackURL: `https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/google/callback`,
     },
     // function(accessToken, refreshToken, profile, done) {
     //   done(null, profile);

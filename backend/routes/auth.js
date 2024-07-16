@@ -50,7 +50,8 @@ router.get(
     console.log("=====================================");
     sendToken(req.user, 200, res, 'google'); // Send token to client
     // Đăng nhập thành công, chuyển hướng người dùng về profile của họ
-    res.redirect("http://localhost:3000");
+    // res.redirect("http://localhost:3000");
+    res.redirect("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app");
   }
 );
 

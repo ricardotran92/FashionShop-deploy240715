@@ -45,7 +45,8 @@ const Login = () => {
   };
 
   const handleGoogleLogin = async () => {
-    window.open("http://localhost:3001/api/auth/google", "_self");
+    // window.open("http://localhost:3001/api/auth/google", "_self");
+    window.open("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/google", "_self");
   };
 
   const handleFacebookLogin = async () => {
