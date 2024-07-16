@@ -20,7 +20,8 @@ export default (user, statusCode, res, loginType='local') => {
     res.cookie("token", token, options);
 
     // Chuyển hướng người dùng đến localhost:3000 để cập nhật hồ sơ
-    res.status(statusCode).redirect('https://unwilling-enid-ricardotran-952ec3c3.koyeb.app');
+    // res.status(statusCode).redirect('https://unwilling-enid-ricardotran-952ec3c3.koyeb.app');
+    res.status(statusCode).redirect(process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL);
   }
 
 }; 

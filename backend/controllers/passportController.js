@@ -37,7 +37,8 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       // callbackURL: `http://localhost:${process.env.PORT}/api/auth/google/callback`, // backend port: 3001
       // callbackURL: "auth/google/callback",
-      callbackURL: `https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/google/callback`,
+      // callbackURL: `https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/google/callback`,
+      callbackURL: process.env.NODE_ENV === 'DEVELOPMENT' ? `${process.env.BACKEND_URL}/api/auth/google/callback` : `${process.env.BACKEND_PROD_URL}/api/auth/google/callback`,
     },
     // function(accessToken, refreshToken, profile, done) {
     //   done(null, profile);
@@ -110,7 +111,8 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: `http://localhost:${process.env.PORT}/api/auth/facebook/callback`,
+      // callbackURL: `http://localhost:${process.env.PORT}/api/auth/facebook/callback`,
+      callbackURL: process.env.NODE_ENV === 'DEVELOPMENT' ? `${process.env.BACKEND_URL}/api/auth/facebook/callback` : `${process.env.BACKEND_PROD_URL}/api/auth/facebook/callback`,
       profileFields: ["id", "emails", "name"], // Yêu cầu các trường thông tin từ Facebook
       authType: 'reauthenticate', // Yêu cầu xác thực lại
     },

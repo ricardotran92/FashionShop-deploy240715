@@ -50,7 +50,8 @@ const Login = () => {
   };
 
   const handleFacebookLogin = async () => {
-    window.open("http://localhost:3001/api/auth/facebook", "_self");
+    // window.open("http://localhost:3001/api/auth/facebook", "_self");
+    window.open("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/facebook", "_self");
   };
 
   return (
