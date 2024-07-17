@@ -10,21 +10,32 @@ export default (user, statusCode, res, loginType='local') => {
     httpOnly: true,// Cookie chỉ có thể được truy cập qua HTTP, không thể được truy cập qua JavaScript trong trình duyệt
   };
 
-  if (loginType === 'local') {
-    // Đặt cookie chứa token trong phản hồi với các tùy chọn đã thiết lập
-    res.status(statusCode).cookie("token", token, options).json({
-      token, // Trả về token dưới dạng phản hồi JSON
-    });
-  } else if (loginType === 'google'){
-    // Đặt cookie chứa token trong phản hồi với các tùy chọn đã thiết lập
-    res.cookie("token", token, options);
+  // if (loginType === 'local') {
+  //   // Đặt cookie chứa token trong phản hồi với các tùy chọn đã thiết lập
+  //   res.status(statusCode).cookie("token", token, options).json({
+  //     token, // Trả về token dưới dạng phản hồi JSON
+  //   });
+  // } else if (loginType === 'google'){
+  //   // Đặt cookie chứa token trong phản hồi với các tùy chọn đã thiết lập
+  //   res.cookie("token", token, options);
 
-    // Chuyển hướng người dùng đến localhost:3000 để cập nhật hồ sơ
-    // res.status(statusCode).redirect('https://unwilling-enid-ricardotran-952ec3c3.koyeb.app');
+  //   // Chuyển hướng người dùng đến localhost:3000 để cập nhật hồ sơ
+  //   // res.status(statusCode).redirect('https://unwilling-enid-ricardotran-952ec3c3.koyeb.app');
     
-  } else if (loginType === 'facebook'){
-    res.cookie("token", token, options);
+  // } else if (loginType === 'facebook'){
+  //   res.cookie("token", token, options);
+  // }
+  // res.status(statusCode).redirect(process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL);
+
+  res.cookie("token", token, options);
+
+  let redirectUrl;
+  if (loginType === 'google' || loginType === 'facebook') {
+    redirectUrl = process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL;
+  } 
+
+  if (!res.headersSent) {
+    res.status(statusCode).redirect(redirectUrl);
   }
-  res.status(statusCode).redirect(process.env.NODE_ENV === 'DEVELOPMENT' ? process.env.FRONTEND_URL : process.env.FRONTEND_PROD_URL);
 
 }; 
