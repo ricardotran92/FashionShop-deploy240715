@@ -118,7 +118,9 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
+        console.log("Looking for user with email:", profile.emails[0].value);
         let user = await User.findOne({ email: profile.emails[0].value });
+        console.log("User found:", user);
         if (user) {
           // Cập nhật thông tin người dùng nếu đã tồn tại
           user.facebookId = profile.id;
@@ -129,6 +131,7 @@ passport.use(
           await user.save();
         } else {
           // Tạo người dùng mới nếu không tồn tại
+          console.log("Create new user with email:", profile.emails[0].value);
           let newUser = {
             facebookId: profile.id,
             email: profile.emails[0].value,
