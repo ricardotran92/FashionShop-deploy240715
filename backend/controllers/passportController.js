@@ -124,12 +124,12 @@ passport.use(
           user.facebookId = profile.id;
           user.avatar = {
             public_id: "facebook_avatar_" + profile.id,
-            url: `http://graph.facebook.com/${profile.id}/picture?type=large`
+            url: `http://graph.facebook.com/${profile.id}/picture?type=large&access_token=${accessToken}`
           };
           await user.save();
         } else {
           // Tạo người dùng mới nếu không tồn tại
-          newUser = {
+          let newUser = {
             facebookId: profile.id,
             email: profile.emails[0].value,
             name: `${profile.name.givenName} ${profile.name.familyName}`,

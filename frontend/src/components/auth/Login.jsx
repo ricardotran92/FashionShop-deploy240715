@@ -44,14 +44,21 @@ const Login = () => {
   
   };
 
+  let baseUrl = window.location.origin;
+  if (baseUrl === "http://localhost:3000") {
+    baseUrl = "http://localhost:3001";
+  }
+
   const handleGoogleLogin = async () => {
     // window.open("http://localhost:3001/api/auth/google", "_self");
-    window.open("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/google", "_self");
+    // window.open("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/google", "_self");
+    window.open(`${baseUrl}/api/auth/google`, "_self");
   };
 
   const handleFacebookLogin = async () => {
     // window.open("http://localhost:3001/api/auth/facebook", "_self");
-    window.open("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/facebook", "_self");
+    // window.open("https://unwilling-enid-ricardotran-952ec3c3.koyeb.app/api/auth/facebook", "_self");
+    window.open(`${baseUrl}/api/auth/facebook`, "_self");
   };
 
   return (
